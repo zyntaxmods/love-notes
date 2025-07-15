@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-export default function page(){
+export default function Page(){
       const router = useRouter();
       const [data, setData] = useState([]);
       const fetchUser = async()=>{ 
