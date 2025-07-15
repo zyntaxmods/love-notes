@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 export default function Page(){
+      Swal.fire({
+        icon: "info",
+        title: "Please wait..",
+        timer: 2000,
+        showConfirmButton: false
+      })
       const router = useRouter();
       const [data, setData] = useState([]);
       const fetchUser = async()=>{ 
