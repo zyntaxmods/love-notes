@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media screen and (max-width: 500px) {
+  #back{
+    @apply p-3 text-[12px] m-2
+  }
+}
