@@ -112,7 +112,7 @@ export default function Page(){
           ></textarea>
           <button
             type="submit"
-            className="bg-rose-500 hover:bg-rose-600 text-white font-semibold px-6 py-2 rounded-md w-full"
+            className={loading ? "pointer-events-none bg-rose-500 hover:bg-rose-600 text-white font-semibold px-6 py-2 rounded-md w-full" : "bg-rose-500 hover:bg-rose-600 text-white font-semibold px-6 py-2 rounded-md w-full pointer-events-auto"}
           >
             {loading ? "😏 sending..." : "💌 Send Message"}
           </button>
