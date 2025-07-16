@@ -5,16 +5,23 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 export default function Page(){
-      Swal.fire({
-        icon: "info",
-        title: "Please wait..",
-        timer: 2000,
-        showConfirmButton: false
-      })
+      const load = ()=>{
+        Swal.fire({
+          icon: "info",
+          title: "Fetching messages...",
+          showConfirmButton: false,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+      }
       const router = useRouter();
       const [data, setData] = useState([]);
-      const fetchUser = async()=>{ 
-        const name = localStorage.getItem("name");
+      const fetchUser = async()=>{
+         load();
+        const name = await localStorage.getItem("name");
+        localStorage.removeItem("name");
         const nameArray = {
           name: name
         }
@@ -27,7 +34,7 @@ export default function Page(){
           body: JSON.stringify(nameArray)
         })
         const data = await res.json();
-       
+        Swal.close()
         if(data.success){
           setData(data.data);
           if(data.data.length === 0){
@@ -55,7 +62,6 @@ export default function Page(){
       useEffect(() =>{
         fetchUser();
       }, [])
-    
 
   return (
     <div className="p-3 w-[100vw] h-[100vh] bg-gradient-to-br from-pink-400 via-rose-300 to-red-400">

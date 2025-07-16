@@ -13,8 +13,18 @@ export default function Page(){
   const [loading, setLoad] = useState(false);
 
   const searchName = ()=>{
+    if(!name){
+      Swal.fire({
+        icon: "warning",
+        title: "Please enter your name",
+        timer: 2000,
+        showConfirmButton: false
+      })
+    }
+    else{
      localStorage.setItem("name", name);
       router.push("/messages");
+    }
   }
 
   const handleSubmit = async(e)=>{
