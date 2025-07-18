@@ -19,8 +19,8 @@ export default function Page(){
   const [songUrl, setUrl] = useState("");
 
   const getSpotifyToken = async () => {
-  const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-  const clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+  const clientId = "f84ef00677e54c97a2e18866a09ec9be";
+  const clientSecret = "fbbae5d4dd034cada7ba05e8164bbe49";
 
   const cachedToken = localStorage.getItem("spotify_token");
   const cachedTime = localStorage.getItem("spotify_token_time");
