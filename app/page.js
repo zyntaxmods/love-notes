@@ -97,6 +97,12 @@ export default function Page(){
     if(data){
       setResults(data.tracks.items);
     }
+    else{
+      Swal.fire({
+        icon: "error",
+        title: "No results found"
+      })
+    }
   }
 
   const searchName = ()=>{
@@ -225,7 +231,7 @@ export default function Page(){
     {results.map((track) => (
       <div
         key={track.id}
-        className="px-4 py-2 hover:bg-rose-100 cursor-pointer text-left"
+        className="flex justify-start gap-3 items-center px-4 py-2 hover:bg-rose-100 cursor-pointer text-left"
         onClick={() => {
           setSet(true);
           setTrack(`${track.name} - ${track.artists[0].name}`);
@@ -233,8 +239,11 @@ export default function Page(){
           setResults([]); 
         }}
       >
-        <div className="font-medium text-gray-700">{track.name}</div>
+        <img width={100} height={100} className="rounded-[8px]" loading="eager" src={track.album.images[0].url} alt="" />
+        <div>
+          <div className="font-medium text-gray-700">{track.name}</div>
         <div className="text-sm text-gray-500">{track.artists[0].name}</div>
+        </div>
       </div>
     ))}
   </div>
