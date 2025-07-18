@@ -10,8 +10,8 @@ export async function POST(req){
     try {
         await connectDB();
         const user = await userModel.find({
-            to: { $regex: new RegExp(name, "i")}
-        });
+            to: { $regex: new RegExp(name, "i")},
+        }).sort({createdAt: -1});
         return NextResponse.json({success: true, data: user});
     } catch (error) {
         return NextResponse.json({success: false, message: error.message});

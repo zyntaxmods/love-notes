@@ -6,10 +6,10 @@ export async function POST(req){
     try {
         await connectDB();
         const body = await req.json();
-        const { author, to, message } = body;
-        if(!author || !to || !message) return NextResponse.json({success: false, message: "Missing parameters"});
+        const { author, to, message, songUrl } = body;
+        if(!author || !to || !message || !songUrl) return NextResponse.json({success: false, message: "Missing parameters"});
 
-        const user = new userModel({ author, to, message });
+        const user = new userModel({ author, to, message, songUrl });
         await user.save();
         return NextResponse.json({success: true, message: "message uploaded"});
 

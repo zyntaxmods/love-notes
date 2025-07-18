@@ -64,7 +64,7 @@ export default function Page(){
       }, [])
 
   return (
-    <div className="p-3 w-[100vw] h-[100vh] bg-gradient-to-br from-pink-400 via-rose-300 to-red-400">
+    <div className="p-3 w-[100vw] min-h-screen bg-gradient-to-br from-pink-400 via-rose-300 to-red-400">
       <div className="flex flex-wrap justify-start items-start gap-2">
         {data.map((user, index) => (
           <div
@@ -106,6 +106,13 @@ export default function Page(){
             <div className="bg-white p-4 rounded-xl text-gray-700 shadow-inner">
               <p className="whitespace-pre-line">{user.message}</p>
             </div>
+            <br />
+            {user.songUrl ? (
+             <div className="m-0">
+               <p className="text-gray-600">My heart in a song:</p>
+              <iframe width="100%" height="100" title="Spotify Embed: kenshie" frameBorder="0" loading="eager" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" src={user.songUrl}></iframe>
+             </div>
+             ): null}
           </div>
         ))}
       </div>
